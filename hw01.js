@@ -5,7 +5,7 @@ function Point (x, y){
 	this.getDistance= function (point2){
 		return (Math.sqrt(Math.pow(this.x-point2.x,2) + Math.pow(this.y-point2.y,2)));
 	};
-};
+}
 
 function Triangle (a, b, c){
 	this.a = a;
@@ -23,7 +23,7 @@ function Triangle (a, b, c){
 		var area = (Math.sqrt((l1+l2+l3)*((-l1)+l2+l3)*(l1-l2+l3)*(l1+l2-l3))/4);
 		return area;
 	};
-};
+}
 
 var x1=1;
 var y1=1;
