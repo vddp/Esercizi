@@ -1,36 +1,40 @@
-function Point (x, y){
-	this.x = x;
-	this.y = y;
-
-	this.getDistance= function (point2){
-		return (Math.sqrt(Math.pow(this.x-point2.x,2) + Math.pow(this.y-point2.y,2)));
-	};
+var Point = function (x, y) {
+	this.x = x || 0; 
+	this.y = y || 0;
+//assegno 0 in caso di undefined
 }
 
-function Triangle (a, b, c){
+Point.prototype.getDistance = function (point) {
+  return (Math.sqrt(Math.pow(this.x-point.x,2) + Math.pow(this.y-point.y,2)));
+};
+
+
+var Triangle = function (a, b, c) {
 	this.a = a;
 	this.b = b;
 	this.c = c;
-	
-	this.getPerimeter= function(){
-		return (a.getDistance(b) + b.getDistance(c) + c.getDistance(a));
-	};
-	
-	this.getArea= function () {
-		var l1 = a.getDistance(b);
-		var l2 = b.getDistance(c);
-		var l3 = c.getDistance(a);
-		var area = (Math.sqrt((l1+l2+l3)*((-l1)+l2+l3)*(l1-l2+l3)*(l1+l2-l3))/4);
-		return area;
-	};
+
+  this.l1 = a.getDistance(b);
+  this.l2 = b.getDistance(c);
+  this.l3 = c.getDistance(a);
+
 }
 
-var x1=1;
-var y1=1;
-var x2=3;
-var y2=1;
-var x3=2;
-var y3=3;
+Triangle.prototype.getPerimeter = function() {
+  return (this.l1+this.l2+this.l3);
+};
+
+Triangle.prototype.getArea = function() {
+  var p = (this.getPerimeter()/2);
+  var area = Math.sqrt((p*(p-this.l1)*(p-this.l2)*(p-this.l3)));
+  return area;
+};
+
+
+
+var x1 = 0, y1 = 0;
+var x2 = 10, y2 = 0;
+var x3 = 0, y3 = 10;
 
 p1 = new Point(x1, y1);
 p2 = new Point(x2, y2);
